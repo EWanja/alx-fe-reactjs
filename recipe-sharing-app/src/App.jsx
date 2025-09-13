@@ -6,6 +6,8 @@ import SearchBar from './components/SearchBar'
 import RecipeDetail from './components/RecipeDetail';
 import FavoritesList from "./components/FavoritesList";
 import RecommendationsList from "./components/RecommendationsList";
+import EditRecipeForm from "./components/EditRecipeForm";
+
 
 
 import './App.css'
@@ -24,6 +26,9 @@ function App() {
           <Route path="/recipes/:id" element={<RecipeDetail />} />
           <Route path="/favorites" element={<FavoritesList />} />
           <Route path="/recommendations" element={<RecommendationsList />} />
+          <Route path="/recipes/:id/edit" element={<EditRecipeForm />} />
+         
+
         </Routes>
       </div>
     </Router>
