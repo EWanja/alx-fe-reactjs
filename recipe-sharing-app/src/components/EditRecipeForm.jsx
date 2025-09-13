@@ -22,8 +22,8 @@ const EditRecipeForm = () => {
 
   if (!recipe) return <p>No recipe found to edit.</p>;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     updateRecipe({ id: recipe.id, title: title.trim(), description });
     navigate(`/recipes/${recipe.id}`); // back to details
   };
