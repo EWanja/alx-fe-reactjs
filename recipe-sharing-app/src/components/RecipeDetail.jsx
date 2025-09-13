@@ -1,7 +1,8 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useRecipeStore from "./recipeStore";
 import DeleteRecipeButton from "./DeleteRecipeButton";
+import EditRecipeForm from "./EditRecipeForm";
 
 const RecipeDetails = () => {
   const { id } = useParams();
@@ -13,18 +14,16 @@ const RecipeDetails = () => {
 
   return (
     <div>
-      <h2>{recipe.title}</h2>
+      <h1>{recipe.title}</h1>
       <p>{recipe.description}</p>
 
-      <div style={{ marginTop: 12 }}>
-        <Link to={`/recipes/${id}/edit`} style={{ marginRight: 8 }}>
-          Edit
-        </Link>
-        <DeleteRecipeButton recipeId={recipe.id} />
-      </div>
+     
+      <EditRecipeForm recipeId={recipe.id} />
+
+      
+      <DeleteRecipeButton recipeId={recipe.id} />
     </div>
   );
 };
 
 export default RecipeDetails;
-
