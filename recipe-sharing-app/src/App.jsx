@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AddRecipeForm from './components/AddRecipeForm'
 import RecipeList from './components/RecipeList'
 import SearchBar from './components/SearchBar'
-import RecipeDetail from './components/RecipeDetail';
+import RecipeDetails from './components/RecipeDetails';
 import FavoritesList from "./components/FavoritesList";
 import RecommendationsList from "./components/RecommendationsList";
 import EditRecipeForm from "./components/EditRecipeForm";
@@ -23,7 +23,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<RecipeList />} />
-          <Route path="/recipes/:id" element={<RecipeDetail />} />
+          <Route path="/recipes/:id" element={<RecipeDetails />} />
           <Route path="/favorites" element={<FavoritesList />} />
           <Route path="/recommendations" element={<RecommendationsList />} />
           <Route path="/recipes/:id/edit" element={<EditRecipeForm />} />
