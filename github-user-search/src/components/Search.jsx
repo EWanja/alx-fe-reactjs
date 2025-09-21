@@ -1,7 +1,6 @@
 // src/components/Search.jsx
 import React, { useState } from "react";
-import fetchUserData from "../services/githubService";
-import UserCard from "./UseCard";
+import fetchUserData from "../services/githubService"
 
 export default function Search() {
   const [username, setUsername] = useState("");
@@ -75,8 +74,27 @@ const handleSubmit = async (e) => {
       <p style={{ color: "#666" }}>{totalCount > 0 ? `Found ${totalCount} users` : null}</p>
 
       <div>
-        {users.map(u => <UserCard key={u.id} user={u} />)}
+  {users.map(u => (
+    <div key={u.id} className="flex items-center gap-4 p-4 border-b">
+      <img
+        src={u.avatar_url}
+        alt={u.login}
+        className="w-12 h-12 rounded-full object-cover"
+      />
+      <div>
+        <div className="font-semibold">{u.login}</div>
+        <a
+          href={u.html_url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:underline"
+        >
+          View Profile
+        </a>
       </div>
+    </div>
+  ))}
+</div>
       {users.length > 0 && users.length < totalCount && (
         
         <div className="flex justify-center mt-3">
