@@ -15,13 +15,13 @@ export default function Search() {
 
   const perPage = 10;
 
-  const doSearch = (reset = true) => {
+  const doSearch = async(reset = true) => {
     setLoading(true);
     setError(null);
 
     const nextPage = reset ? 1 : page + 1;
-    fetchUserData(username, location, minRepos, nextPage, perPage)
-      .then(({ items, total_count }) => {
+    try {
+     const { items, total_count } = await fetchUserData(username, location, minRepos, nextPage, perPage)
         if (reset) {
           setUsers(items);
           setPage(1);
@@ -31,16 +31,18 @@ export default function Search() {
         }
         setTotalCount(total_count);
         if (total_count === 0) setError("No users found");
-      })
-      .catch(() => setError("An error occurred while fetching users"))
-      .finally(() => setLoading(false));
-  };
+      } catch {
+    setError("An error occurred while fetching users");
+  } finally {
+    setLoading(false);
+  }
+};
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    doSearch(true);
-  };
-
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  await doSearch(true);
+};
+   
   const loadMore = () => {
     if (users.length >= totalCount) return;
     doSearch(false);
