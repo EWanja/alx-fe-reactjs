@@ -43,7 +43,7 @@ function AddRecipeForm() {
     }
 
     return (
-         <div className="max-w-lg mx-auto p-6 bg-gray-100 rounded-xl shaown-md mt-8">
+         <div className="max-w-lg mx-auto p-6 bg-gray-100 rounded-xl shadow-md mt-8">
       <h2 className="text-lg font-bold  mb-6  text-center">Add New Recipe</h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
