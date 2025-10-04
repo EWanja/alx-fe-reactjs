@@ -19,6 +19,7 @@ function HomePage() {
   }, []);
 
   return (
+
     <div className=" p-6 bg-gray-100">
       <h1 className="text-lg font-bold mb-6">Recipes</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -46,7 +47,17 @@ function HomePage() {
           </div>
         ))}
       </div>
+
+      <div className="flex justify-center m-6">
+        <Link to="/add-recipe">
+          <button className="px-4 py-2 bg-[#349e44] text-white rounded-lg hover:bg-green-800">
+            Add Recipe
+          </button>
+        </Link>
+      </div>
+
     </div>
+
   );
 }
 
