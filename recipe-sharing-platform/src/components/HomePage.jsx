@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 
 function HomePage() {
@@ -7,7 +8,7 @@ function HomePage() {
   useEffect(() => {
     async function loadRecipes() {
       try {
-        const res = await fetch("/src/data.json");
+        const res = await fetch("/data.json");
         const data = await res.json();
         setRecipes(data);
       } catch (err) {
@@ -34,9 +35,13 @@ function HomePage() {
             <div className="p-4">
               <h2 className="text-xl font-semibold text-gray-800 p-2">{recipe.title}</h2>
               <p className="mt-2  p-2 text-gray-600">{recipe.summary}</p>
+
+              <Link to={`/recipe/${recipe.id}`}>
               <button className="mt-2 px-4 py-2 bg-blue-400 text-white rounded-lg hover:bg-blue-800">
                 View Recipe
-              </button>
+                </button>
+                </Link>
+
             </div>
           </div>
         ))}
