@@ -1,14 +1,20 @@
-import React from 'react'
-import { Navigate } from 'react-router-dom'
+import React from "react";
+import { Navigate } from "react-router-dom";
 
 
-const isAuthenticated = false
-
-function ProtectedRoute({ children }) {
-  if (!isAuthenticated) {
-    return <Navigate to="/" replace />
-  }
-  return children
+function useAuth() {
+  const user = { loggedIn: true }; /
+  return user && user.loggedIn;
 }
 
- export default ProtectedRoute
+function ProtectedRoute({ children }) {
+  const isAuth = useAuth();
+
+  if (!isAuth) {
+    return <Navigate to="/" replace />; 
+  }
+
+  return children;
+}
+
+export default ProtectedRoute;
