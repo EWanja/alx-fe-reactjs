@@ -2,53 +2,34 @@ import React, { useState } from 'react'
 import AddTodoForm from './AddTodoForm';
 
 function TodoList() {
-  const [todos, setTodos] = useState([
-    { id: 1, text: 'Learn React', completed: false },
-    { id: 2, text: 'Build a project', completed: true },
-  ]);
+  const [todos, setTodos] = useState(['Sample todo'])
 
   const addTodo = (text) => {
-    if (!text.trim()) return;
-    const newTodo = { id: Date.now(), text, completed: false };
-    setTodos([...todos, newTodo]);
+    setTodos([...todos, text]);
   };
 
-  const toggleTodo = (id) => {
-    setTodos(
-      todos.map(todo =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
-    );
+  const toggleTodo = (index) => {
+    const newTodos = [...todos];
+    newTodos[index] = newTodos[index] + ' (done)'
+    setTodos(newTodos);
   };
 
-  const deleteTodo = (id) => {
-    setTodos(todos.filter(todo => todo.id !== id));
+  const deleteTodo = (index) => {
+    setTodos(todos.filter((_, i) => i !== index))
   };
 
   return (
     <div>
-      <h1>Todo List</h1>
-      <AddTodoForm addTodo={addTodo} />
+      <AddTodoForm onAddTodo={addTodo} />
       <ul>
-        {todos.map(todo => (
-          <li
-            key={todo.id}
-            onClick={() => toggleTodo(todo.id)}
-            style={{
-              textDecoration: todo.completed ? 'line-through' : 'none',
-              cursor: 'pointer',
-            }}
-            data-testid="todo-item"
-          >
-            {todo.text}
-            <button onClick={(e) => { e.stopPropagation(); deleteTodo(todo.id); }}>
-              Delete
-            </button>
+        {todos.map((todo, index) => (
+          <li key={index} onClick={() => toggleTodo(index)}>
+            {todo} <button onClick={() => deleteTodo(index)}>Delete</button>
           </li>
         ))}
       </ul>
     </div>
-  );
+  )
 }
 
-export default TodoList;
+export default TodoList
