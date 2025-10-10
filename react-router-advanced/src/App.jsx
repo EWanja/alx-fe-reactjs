@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Home from './components/Home'
 import About from './components/About'
 import Profile from './components/Profile'
-import Post from './components/Post'
+import BlogPost from './components/BlogPost'
 import NotFound from './components/NotFound'
 import './App.css'
 
@@ -17,14 +17,14 @@ function App() {
         <Link to="/" style={{ marginRight: '10px' }}>Home</Link>
         <Link to="/about" style={{ marginRight: '10px' }}>About</Link>
         <Link to="/profile" style={{ marginRight: '10px' }}>Profile</Link>
-        <Link to="/post/1">Post #1</Link>
+        <Link to="/blogpost/1" style={{ marginRight: '10px' }}>Blog #1</Link>
       </nav>
 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/profile/*" element={<Profile />} />
-        <Route path="/post/:id" element={<Post />} />
+        <Route path="/blogpost/:id" element={<BlogPost />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
 
