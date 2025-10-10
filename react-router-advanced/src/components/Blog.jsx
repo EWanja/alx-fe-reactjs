@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 
-function BlogPost() {
+function Blog() {
   const { id } = useParams()
 
   return (
@@ -12,4 +12,4 @@ function BlogPost() {
   )
 }
 
-export default BlogPost
+export default Blog
