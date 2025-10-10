@@ -24,7 +24,7 @@ function RegistrationForm() {
       setErrors("Password is required");
       return;
     }
-        setError("")
+        setErrors("")
 
         console.log("From submiited")
         console.log("Username", username)
